@@ -27,7 +27,7 @@ const Main = (props) => {
     return (
         <main>
             <Route exact path="/">
-                <Index />
+                <Index people={people} />
             </Route>
             <Route path="/people/:id" render={(rp) => (
                 <Show {...rp} />
