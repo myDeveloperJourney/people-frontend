@@ -18,7 +18,18 @@ const Main = (props) => {
         const response = await fetch(URL);
         const data = await response.json();
         setPeople(data);
-    }
+    };
+
+    const createPeople = async (person) => {
+        await fetch(URL, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'Application/json'
+            },
+            body: JSON.stringify(person)
+        });
+        getPeople();
+    };
 
     useEffect(() => {
         getPeople();
@@ -27,7 +38,7 @@ const Main = (props) => {
     return (
         <main>
             <Route exact path="/">
-                <Index people={people} />
+                <Index people={people} createPeople={createPeople} />
             </Route>
             <Route path="/people/:id" render={(rp) => (
                 <Show {...rp} />
