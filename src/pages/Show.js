@@ -22,6 +22,11 @@ const Show = (props) => {
         props.updatePeople({ name, title, image }, _id);
     };
 
+    const handleRemovePerson = (id) => {
+        props.deletePeople(id);
+        props.history.push('/');
+    };
+
     return (
         <div className="person">
             <h1>{person.name}</h1>
@@ -31,6 +36,7 @@ const Show = (props) => {
                 ? <img src={person.image} alt={person.name} /> 
                 : <img src={avatarURL} alt="placeholder" /> 
             }
+            <button onClick={() => handleRemovePerson(person._id)}>Delete This Person</button>
             <form onSubmit={handleSubmit}>
                 <input 
                     name="name"

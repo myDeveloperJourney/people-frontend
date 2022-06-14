@@ -42,6 +42,11 @@ const Main = (props) => {
         getPeople();
     }
 
+    const deletePeople = async (id) => {
+        await fetch(URL + id, { method: 'DELETE' });
+        getPeople();
+    }
+
     useEffect(() => {
         getPeople();
     }, []);
@@ -56,6 +61,7 @@ const Main = (props) => {
                     {...rp} 
                     people={people} 
                     updatePeople={updatePeople}
+                    deletePeople={deletePeople}
                 />
             )} />
         </main>
