@@ -8,8 +8,19 @@ const Show = (props) => {
     
     const [ editForm, setEditForm ] = useState(person);
 
-    const handleChange = (event) => {};
-    const handleSubmit = (event) => {};
+    const handleChange = (event) => {
+        setEditForm({
+            ...editForm,
+            [event.target.name]: event.target.value
+        });
+    };
+    
+    const handleSubmit = (event) => {
+        // 1) prevent default behavior of a form submission
+        event.preventDefault();
+        const { name, title, image, _id } = editForm;
+        props.updatePeople({ name, title, image }, _id);
+    };
 
     return (
         <div className="person">
@@ -20,7 +31,7 @@ const Show = (props) => {
                 ? <img src={person.image} alt={person.name} /> 
                 : <img src={avatarURL} alt="placeholder" /> 
             }
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                     name="name"
                     value={editForm.name}
