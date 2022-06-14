@@ -41,7 +41,7 @@ const Main = (props) => {
                 <Index people={people} createPeople={createPeople} />
             </Route>
             <Route path="/people/:id" render={(rp) => (
-                <Show {...rp} />
+                <Show people={people} {...rp} />
             )} />
         </main>
     );
