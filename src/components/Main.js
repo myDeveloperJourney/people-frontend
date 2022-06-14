@@ -12,7 +12,8 @@ const Main = (props) => {
     
     const [ people, setPeople ] = useState(null);
 
-    const URL = 'http://localhost:4000/people/';
+    // const URL = 'http://localhost:4000/people/';
+    const URL = 'https://people-api-v11.herokuapp.com/people/';
 
     const getPeople = async () => {
         const response = await fetch(URL);
